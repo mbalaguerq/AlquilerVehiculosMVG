@@ -15,7 +15,7 @@ namespace AlquilerVehiculosMVC.modelo
 
         public override string ToString()
         {
-            return base.ToString() + " cc: " + cc;
+            return base.ToString()  + cc;
         }
     }
 }

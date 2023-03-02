@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlquilerVehiculosMVC.modelo;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,5 +80,18 @@ namespace AlquilerVehiculosMVC.vista
 
             return vehiculoHash;
         }
+
+        public static void mostrarVehiculo(List<string> listaveh, int tipo)
+        {
+
+            Console.WriteLine("Matrícula  \tModel        \t\tMarca      \tNombre ");
+
+            foreach (string vehString in listaveh)
+            {
+                Console.WriteLine(vehString);
+            }
+        }
+
+
     }
 }

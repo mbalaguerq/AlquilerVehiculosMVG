@@ -16,7 +16,7 @@ namespace AlquilerVehiculosMVC.vista
             Console.WriteLine("2. Alta clientes");
             Console.WriteLine("4.Listar clientes");
             Console.WriteLine("3. Mostrar vehiculos");
-            Console.WriteLine("5. Mostrar solo coches");
+            Console.WriteLine("5. Mostrar vehículo por tipo");
             Console.WriteLine("6. Eliminar vehiculo");
             Console.WriteLine("7. Alta contrato");
             Console.WriteLine("8. Listar contratos");

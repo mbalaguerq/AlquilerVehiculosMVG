@@ -9,7 +9,7 @@ namespace AlquilerVehiculosMVC.vista
 {
     internal static class ClienteView
     {
-        public static Hashtable hCliente()
+        public static Hashtable altaCliente()
         {
             Hashtable clienteHash = new Hashtable();
 

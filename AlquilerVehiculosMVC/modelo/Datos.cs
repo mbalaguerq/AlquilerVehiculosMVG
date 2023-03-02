@@ -68,9 +68,50 @@ namespace AlquilerVehiculosMVC.modelo
             }
             return listaClientes;
         }
+        public List<string> listaVehiculos() 
+        {
+            List<string> listavehiculos=new List<string>();
 
-
+            foreach(Vehiculo veh in vehiculos)
+            {
+                listavehiculos.Add(veh.Matricula + "\t" + veh.Marca + "\t" + veh.Model + "\t" + veh.GetType().Name);                
+            }
+            return listavehiculos;
+        }
+        public List<string> listaVehByTipo(int tipo)
+        {
+            List<string> vehEncontrado=new List<string>();
+            switch(tipo)
+            {
+                case 1:
+                    foreach (Vehiculo veh in vehiculos)
+                    {
+                        if(veh is Coche) 
+                        {
+                            vehEncontrado.Add(veh.ToString());
+                        }
+                    }
+                    break;
+                case 2:
+                    foreach (Vehiculo veh in vehiculos)
+                    {
+                        if (veh is Moto)
+                        {
+                            vehEncontrado.Add(veh.ToString());
+                        }
+                    }
+                    break;
+                case 3:
+                    foreach (Vehiculo veh in vehiculos)
+                    {
+                        if (veh is Camion)
+                        {
+                            vehEncontrado.Add(veh.ToString());
+                        }
+                    }
+                    break;
+            }
+            return vehEncontrado;
+        }
     }
-
-
 }

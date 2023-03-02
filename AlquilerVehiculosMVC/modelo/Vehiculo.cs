@@ -20,7 +20,10 @@ namespace AlquilerVehiculosMVC.modelo
         public override string ToString()
 
         {
-            return "Matricula: " + matricula + " marca: " + marca + " modelo: " + model;
+            return  matricula +  "\t" + marca + "\t" + model;
+
+
+            Console.WriteLine("Hola que tal");
         }
     }
 }

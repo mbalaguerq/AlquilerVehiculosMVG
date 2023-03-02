@@ -38,16 +38,20 @@ namespace AlquilerVehiculosMVC.controlador
                 switch (opcion)
                 {
                     case "1":
-
                         altaVehiculo();
-
                         break;
                     case "2":
-                        clienteHash = ClienteView.hCliente();
+                        clienteHash = ClienteView.altaCliente();
                         datos.addCliente(clienteHash);
                         break;
-                    case "3":
+                    case "4":
                         mostrarClientes();
+                        break;
+                    case "3":
+                        mostrarVehiculos();
+                        break;
+                    case "5":
+                        mostrarVehByTipo();
                         break;
 
 
@@ -87,13 +91,38 @@ namespace AlquilerVehiculosMVC.controlador
                     break;
             }
         }
+        private void altaCliente()
+        {
+            Hashtable clienteHash;
+            clienteHash = ClienteView.altaCliente();
+            datos.addCliente(clienteHash);
+            //Una altre manera de fer-ho
+            //datos.addCliente(Clienteview.altaCliente();
+
+        }
 
         private void mostrarClientes()
         {
             List<string> listaClientes = datos.listaClientes();
             ClienteView.mostrarClientes(listaClientes);
 
-            ClienteView.mostrarClientes(datos.listaClientes());
+            //
+            //ClienteView.mostrarClientes(datos.listaClientes());
+        }
+        private void mostrarVehiculos()
+        {
+            List<string> listaVehiculos= datos.listaVehiculos();
+            VehiculosView.mostrarVehiculo(listaVehiculos);
+            //VehiculosView.mostrarVehiculo(datos.listaVehiculos());
+
+        }
+        private void mostrarVehByTipo()
+        {
+            int tipovehiculo;
+            tipovehiculo=VehiculosView.seleccionarTipoVehiculo();
+            List<string> listaveh = datos.listaVehByTipo(tipovehiculo);
+            VehiculosView.mostrarVehiculo(listaveh);
+            //VehiculosView.mostrarVehiculo(datos.listaVehiculos());
         }
     }
 }
