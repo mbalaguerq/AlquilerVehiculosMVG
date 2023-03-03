@@ -8,7 +8,6 @@ namespace AlquilerVehiculosMVC.vista
 {
     internal class View
     {
-
         public string vistaMenu()
         {
             string opcion;
@@ -19,13 +18,11 @@ namespace AlquilerVehiculosMVC.vista
             Console.WriteLine("5. Mostrar vehículo por tipo");
             Console.WriteLine("6. Eliminar vehiculo");
             Console.WriteLine("7. Alta contrato");
-            Console.WriteLine("8. Listar contratos");
-           
+            Console.WriteLine("8. Listar contratos");           
             Console.WriteLine("0. Salir");
             opcion = pedirOpcionMenu();
             return opcion;
         }
-
         private string pedirOpcionMenu()
         {
             string opcion;
@@ -36,7 +33,6 @@ namespace AlquilerVehiculosMVC.vista
             } while (!"012345678".Contains(opcion));
 
             return opcion;
-
         }
     }
 }

@@ -12,15 +12,11 @@ namespace AlquilerVehiculosMVC.modelo
     {
         List<Vehiculo> vehiculos;
         List<Cliente> clientes;
-
         public Datos()
         {
             vehiculos = new List<Vehiculo>();
             clientes = new List<Cliente>();
         }
-
-       
-
         public void addCoche(Hashtable vehiculoHash)
         {
             Coche coche = new Coche();
@@ -51,42 +47,42 @@ namespace AlquilerVehiculosMVC.modelo
 
             vehiculos.Add(camion);
         }
-        public void addCliente(Hashtable clienteHash) 
+        public void addCliente(Hashtable clienteHash)
         {
             Cliente cliente = new Cliente();
-            cliente.Nombre= (string)clienteHash["Nom"];
+            cliente.Nombre = (string)clienteHash["Nom"];
             cliente.Nif = (string)clienteHash["Nif"];
             clientes.Add(cliente);
         }
-        public  List<string> listaClientes()
+        public List<string> listaClientes()
         {
-            List<string> listaClientes= new List<string>();
+            List<string> listaClientes = new List<string>();
 
-            foreach(Cliente cliente in clientes) 
+            foreach (Cliente cliente in clientes)
             {
-            listaClientes.Add(cliente.ToString());               
+                listaClientes.Add(cliente.ToString());
             }
             return listaClientes;
         }
-        public List<string> listaVehiculos() 
+        public List<string> listaVehiculos()
         {
-            List<string> listavehiculos=new List<string>();
+            List<string> listavehiculos = new List<string>();
 
-            foreach(Vehiculo veh in vehiculos)
+            foreach (Vehiculo veh in vehiculos)
             {
-                listavehiculos.Add(veh.Matricula + "\t" + veh.Marca + "\t" + veh.Model + "\t" + veh.GetType().Name);                
+                listavehiculos.Add(veh.Matricula + "\t" + veh.Marca + "\t" + veh.Model + "\t" + veh.GetType().Name);
             }
             return listavehiculos;
         }
         public List<string> listaVehByTipo(int tipo)
         {
-            List<string> vehEncontrado=new List<string>();
-            switch(tipo)
+            List<string> vehEncontrado = new List<string>();
+            switch (tipo)
             {
                 case 1:
                     foreach (Vehiculo veh in vehiculos)
                     {
-                        if(veh is Coche) 
+                        if (veh is Coche)
                         {
                             vehEncontrado.Add(veh.ToString());
                         }
@@ -112,6 +108,15 @@ namespace AlquilerVehiculosMVC.modelo
                     break;
             }
             return vehEncontrado;
+        }
+        public List<string> existNif()
+        {
+            List<string> cliEncontrado = new List<string>();
+            foreach(Cliente c in clientes)
+            {
+                cliEncontrado.Add(c.ToString());
+            }
+            return cliEncontrado;
         }
     }
 }

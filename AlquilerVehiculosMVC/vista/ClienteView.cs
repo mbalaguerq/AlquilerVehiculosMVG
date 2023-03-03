@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlquilerVehiculosMVC.controlador;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,21 +8,37 @@ using System.Threading.Tasks;
 
 namespace AlquilerVehiculosMVC.vista
 {
-    internal static class ClienteView
+    internal  class ClienteView
     {
-        public static Hashtable altaCliente()
+        public Hashtable altaCliente(ClienteController cliController)
         {
-            Hashtable clienteHash = new Hashtable();
+            // recibimos por parametro el objeto del controlador ClienteController
 
-            Console.Write("Nom: ");
-            string nom = Console.ReadLine();
+            Hashtable clienteHash = new Hashtable();
             Console.Write("Nif: ");
             string nif = Console.ReadLine();
-            clienteHash.Add("Nom", nom);
-            clienteHash.Add("Nif", nif);
 
+            // para comprobar si el cliente ya existe
+            // llamamos al método getNombre que está en el contolador ClienteControler
+            // y le enviamos el nif com parámwtro
 
-        return clienteHash;
+            string nombre = cliController.getNombre(nif);
+            if (!nombre.Equals(""))
+            {
+                // si el método getNombre nos devuelve un valor distinto de "" es que ya existe
+                Console.WriteLine("El cliente con nif " + nif + " ya extiste con nombre: " + nombre);
+                return null;
+            }
+            else
+            {
+                Console.Write("Nombre: ");
+                nombre = Console.ReadLine();
+
+                clienteHash.Add("Nif", nif);
+                clienteHash.Add("Nombre", nombre);
+                return clienteHash;
+            }
+
         }
         public static void mostrarClientes(List<string> listaClientes)
         {

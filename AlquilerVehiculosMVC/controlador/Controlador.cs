@@ -93,14 +93,13 @@ namespace AlquilerVehiculosMVC.controlador
         }
         private void altaCliente()
         {
-            Hashtable clienteHash;
-            clienteHash = ClienteView.altaCliente();
-            datos.addCliente(clienteHash);
-            //Una altre manera de fer-ho
-            //datos.addCliente(Clienteview.altaCliente();
-
+            // 1) derivar la logica/control a un controlador especifico de clientes
+            // no podemos hacer un new datos ya que perderiamos todos los datos
+            // por lo tanto hay que enviar por parámetro el objeto datos al nuevo
+            // controlador
+            ClienteController clienteController = new ClienteController(datos);
+            clienteController.altaCliente();
         }
-
         private void mostrarClientes()
         {
             List<string> listaClientes = datos.listaClientes();
@@ -110,18 +109,17 @@ namespace AlquilerVehiculosMVC.controlador
             //ClienteView.mostrarClientes(datos.listaClientes());
         }
         private void mostrarVehiculos()
-        {
+        {            
             List<string> listaVehiculos= datos.listaVehiculos();
-            VehiculosView.mostrarVehiculo(listaVehiculos);
+            VehiculosView.mostrarVehiculos(listaVehiculos,4);
             //VehiculosView.mostrarVehiculo(datos.listaVehiculos());
-
         }
         private void mostrarVehByTipo()
         {
             int tipovehiculo;
             tipovehiculo=VehiculosView.seleccionarTipoVehiculo();
             List<string> listaveh = datos.listaVehByTipo(tipovehiculo);
-            VehiculosView.mostrarVehiculo(listaveh);
+            VehiculosView.mostrarVehiculos(listaveh, tipovehiculo);
             //VehiculosView.mostrarVehiculo(datos.listaVehiculos());
         }
     }

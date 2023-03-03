@@ -13,11 +13,9 @@ namespace AlquilerVehiculosMVC.vista
     //no hay que crear objetos de esta clase.
     //Se puede acceder a ella sin hacer el new.
     {
-
         public static int seleccionarTipoVehiculo()
         {
             int opcion;
-
             do
             {
                 Console.WriteLine("1) Coche 2) Moto 3) Camión 0) Salir");
@@ -25,7 +23,6 @@ namespace AlquilerVehiculosMVC.vista
             } while (opcion < 0 || opcion > 3);
             return opcion;
         }
-
         public static Hashtable addVehiculo(int tipoVehiculo)
         {
             Hashtable vehiculoHash = new Hashtable();
@@ -37,8 +34,8 @@ namespace AlquilerVehiculosMVC.vista
             string marca = Console.ReadLine();
 
             Console.Write("Modelo: ");
-            string model = Console.ReadLine();
-            
+
+            string model = Console.ReadLine();            
             vehiculoHash.Add("Matricula", matricula); //adding a key/value using the Add() method
             vehiculoHash.Add("Marca", marca);
             vehiculoHash.Add("Model", model);
@@ -53,7 +50,6 @@ namespace AlquilerVehiculosMVC.vista
                     vehiculoHash.Add("Plazas", plazas);
                     vehiculoHash.Add("Puertas", puertas);
                     break;
-
                 case 2:
                     Console.Write("cc: ");
                     int cc = int.Parse(Console.ReadLine());
@@ -65,33 +61,34 @@ namespace AlquilerVehiculosMVC.vista
                     vehiculoHash.Add("kg", kg);
                     break;
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
             return vehiculoHash;
         }
-
-        public static void mostrarVehiculo(List<string> listaveh, int tipo)
-        {
-
-            Console.WriteLine("Matrícula  \tModel        \t\tMarca      \tNombre ");
-
+        public static void mostrarVehiculos(List<string> listaveh, int tipo)
+        {           
+            switch (tipo)
+            {
+              
+                case 1:
+                    Console.WriteLine("Matrícula\tMarca        \tModelo        Puertas\t        Plazas");
+                    Console.WriteLine("===============================================================");                
+                    break;
+                case 2:
+                    Console.WriteLine("Matrícula\tMarca        \tModelo        CC");
+                    Console.WriteLine("===============================================================");
+                    break;
+                case 3:
+                    Console.WriteLine("Matrícula\tMarca        \tModelo        Kg");
+                    Console.WriteLine("===============================================================");
+                    break;
+                case 4:
+                    Console.WriteLine("Matrícula\tMarca        \tModelo        Tipo");
+                    Console.WriteLine("===============================================================");
+                    break;
+            }
             foreach (string vehString in listaveh)
             {
                 Console.WriteLine(vehString);
             }
         }
-
-
     }
 }
